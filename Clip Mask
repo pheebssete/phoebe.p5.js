@@ -1,0 +1,62 @@
+function setup() {
+  createCanvas(400, 400);
+  // set up canvas
+  background(255,105,180);
+  rectMode(CENTER);
+
+  // set mask
+  addClipMask();
+
+  // draw things that will be masked
+  background(255,192,203);
+  noStroke();
+  fill(199,21,133);
+  for (i = 0; i < 100; i++) {
+    rect(random(400), random(400), 10, 10);
+  }
+
+  // remove mask
+  removeClipMask();
+
+  // show where mask was drawn with an outline on top
+  //stroke(255);
+  noFill();
+  drawMaskShape();
+}
+
+function draw() {}
+
+
+function addClipMask() {
+  drawingContext.save();
+  fill(0);
+  stroke(0);
+  strokeWeight(0);
+  drawMaskShape();
+  drawingContext.clip();
+}
+
+// mask
+function drawMaskShape() {
+  push();
+  translate(width / 2, height / 2);
+  
+  beginShape();
+  // number of points
+  for (let i = 0; i < 6; i++) {
+    // Generate random points within a circle
+    let angle1 = map(i, 10, 16, 0, TWO_PI);
+    // size
+    let radius1 = random(0, 150);
+    let x1 = cos(angle1) * radius1;
+    let y1 = sin(angle1) * radius1;
+    vertex(x1, y1);
+  }
+  endShape(CLOSE);
+  
+  pop();
+}
+
+function removeClipMask() {
+  drawingContext.restore();
+}
