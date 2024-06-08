@@ -1,0 +1,40 @@
+// uplaod image
+var img, x, y;
+
+function preload() {
+
+img = loadImage("view.jpeg");
+
+}
+
+
+// image canvas
+function setup() {
+
+createCanvas (1200, 700);
+
+background(0);
+
+noStroke();
+
+}
+
+
+// x and y mouse plus the shape
+function draw() {
+
+background(0);
+
+x = mouseX;
+
+y = mouseY;
+
+image( img, 0, 0);
+
+var c = get(x, y);
+
+fill(c);
+rect (x, y, 200, 150); // the shape
+
+}  
+
