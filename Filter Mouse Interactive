@@ -1,0 +1,17 @@
+var img;
+function preload() {
+img = loadImage("beach.jpeg");
+}
+
+
+function setup () {
+createCanvas (600, 450);
+background(0);
+}
+
+function draw() {
+background(0);
+image(img, 0, 0);
+var v = map(mouseX, 0, width, 0, 10);
+filter(BLUR, v);
+}
