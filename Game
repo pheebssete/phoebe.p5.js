@@ -1,0 +1,90 @@
+// Variables to track game state and ball movement
+var gameStarted = false;
+var gameOver = false;
+var xpos = 200;
+var ypos = 200;
+var dx = 5; //ball speed
+var dy = 3;
+var paddleWidth = 10;
+var paddleHeight = 80;
+
+function preload() {
+    effect = loadSound('bgsound.mp3'); // bg music
+    play = loadImage('img.jpg') // another bg img
+    space = loadImage('astro.jpeg') //bg image
+}
+
+function setup() {
+  createCanvas(400, 400) // size of canva
+      effect.loop(); //bg music to loop
+}
+
+function startScreen() { //display start screen 
+  image(space,0,0,width,700) //bg img for the start screen
+  fill('255');
+  textSize(40); 
+  textFont("Tiny5"); // google font
+  textAlign(CENTER);
+  text('Press Any Key to Start', width / 2, height / 2); // display text in the start
+}
+
+function endScreen() { //display end screen 
+  image(space,0,0,width,600)
+  fill('255');
+  textFont("Tiny5"); // google font
+  textSize(25);
+  textAlign(CENTER);
+  text('Game Over! Press Any Key to Restart', width / 2, height / 2); //display text in the end
+}
+
+function draw() {
+  if (!gameStarted) { //display the startscreen
+    startScreen();
+    return;
+  }
+  
+  if (gameOver) {
+    endScreen(); //display for endscreen
+    return;
+  }
+  
+  
+  image(play,0,0,width,500) // bg img while in the game
+  rect(10, mouseY - paddleHeight / 2, paddleWidth, paddleHeight); //paddle controlled by mouse
+  rect(380, mouseY - paddleHeight / 2, paddleWidth, paddleHeight); //paddle controlled by mouse also
+  ellipse(xpos, ypos, 20, 20); //ball
+  
+  if (xpos >= width - 20 - paddleWidth && ypos >= mouseY - paddleHeight / 2 && ypos <= mouseY + paddleHeight / 2 ||
+      xpos <= 20 + paddleWidth && ypos >= mouseY - paddleHeight / 2 && ypos <= mouseY + paddleHeight / 2) { // bouncy ball/ to bounce the ball
+    dx = -dx;
+  }
+  
+  if (xpos >= width - 20 || xpos <= 20) {
+    gameOver = true; 
+  }
+  
+  if (ypos >= height - 20 || ypos <= 20) {
+    dy = -dy;//bounce the ball for up and bottom
+  }
+  
+  fill('255');
+  text('PLANET SHAKERS', 190, 90); // text while playing
+  
+  for (var i = 0; i < 400; i += 20) {
+    line(200, i, 200, i + 10); // the line in the center
+  }
+  
+  xpos += dx; //x and y position of the ball
+  ypos += dy;
+}
+
+function keyPressed() {
+  if (!gameStarted || gameOver) {
+    gameStarted = true;
+    gameOver = false; //it will start over the game if key is pressed
+    xpos = 200;
+    ypos = 200;
+    dx = 5;
+    dy = 3; //reset x and y increment
+  }
+}
