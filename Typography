@@ -1,0 +1,39 @@
+
+function setup() {
+  createCanvas(400, 400);
+  
+  l1 = createGraphics(400,400)
+}
+
+let time = 0
+
+function draw() {
+  textFont('Jacquard 24 Charted');
+  background(34,37,60);
+  
+  
+  time += round(deltaTime/1000,3)
+  
+  textSize(30)
+  fill(80,0,255)
+  textAlign(CENTER,CENTER)
+  text("Hello World.html",-5,100,400,200)
+  
+  l1.textFont('Jacquard 24 Charted')
+  l1.noErase()
+  l1.background(171,7,67)
+  l1.fill(255)
+  l1.textAlign(CENTER,CENTER)
+  l1.textSize(30)
+  l1.text("Bath Spa University Bath Spa University",-200,100,800,200)
+  l1.erase()
+  
+  l1.push()
+  l1.translate(150, 150)
+  l1.rotate(time)
+  l1.rect(-830,-900,800,100)
+  l1.rect(30,-600,800,1200)
+  l1.pop()
+  
+  image(l1,0,0)
+}
