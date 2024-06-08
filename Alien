@@ -1,0 +1,77 @@
+function setup() {
+  createCanvas(1024, 768); // createCanvas (width, height)
+}
+
+function draw() {
+  background(255, 0, 90); // 0- black 255 - white 
+  fill("#5F97C0") // body color for alien 
+  
+
+  //body of the alien
+  beginShape ();
+  vertex ( 417.83, 283);
+  bezierVertex ( 445.21, 169.05, 520.84, 9.53, 604.33, 283);
+  bezierVertex ( 850.94, 213.47, 747.36, 355.1, 669.41, 434.6);
+  bezierVertex ( 715.79, 509.28, 780.73, 644.91, 669.41, 590.07);
+  bezierVertex ( 609.88, 663.45, 595, 620.64, 595, 590.07);
+  bezierVertex ( 573.42, 621.61, 526.78, 665.77, 512.86, 590.07);
+  bezierVertex ( 457.2, 645.69, 420.09, 613.24, 408.5, 590.07);
+  bezierVertex ( 401.09, 623.22, 380.28, 669.63, 356.32, 590.07);
+  bezierVertex ( 245.77, 687.4, 290.28, 526.98, 326.36, 434.6);
+  bezierVertex ( 180.25, 253.83, 329.57, 258.21, 417.83, 283);
+  vertex ( 417.83, 283);
+  endShape();  
+  
+  //teeth
+  beginShape ();
+  vertex(383, 484)
+  bezierVertex(390.2, 454.8, 399.33, 471.83, 403, 484)
+  bezierVertex(408.83, 474.67, 422.3, 461.6, 429.5, 484)
+  endShape()
+  
+  //teeth2
+  beginShape()
+  vertex(430,484.5)
+  bezierVertex(437.2, 506.9, 449.67, 497.83, 455.5, 488.5)
+  bezierVertex(459.17, 500.67, 473.8, 513.7, 481, 484.5)
+  endShape();
+  
+  //theeth3
+  beginShape()
+  vertex(523.5,484.5)
+  bezierVertex(530.7, 506.9, 545.17, 496.33, 551, 487)
+  bezierVertex(554.67, 499.17, 564.8, 513.7, 572, 484.5)
+  endShape()
+  
+  //theeth4 
+  beginShape()
+  vertex(571,484.12)
+  bezierVertex(578.2, 454.92, 587.33, 471.96, 591, 484.12)
+  bezierVertex(596.83, 474.79, 610.3, 461.72, 617.5, 484.12)
+  endShape()
+  
+  
+  //left eye
+  strokeWeight(3)
+  fill("D9D9D9")
+  ellipseMode(CORNER)
+  ellipse (411, 315, 66, 100);
+  line (451, 383, 450, 340);
+  
+  //right eye
+  ellipseMode(CORNER)
+  ellipse (548, 315, 65, 100);
+  line (586, 383, 586, 355);
+  
+  //third eye
+  fill("#F5E8A5") // color for third eye
+  ellipseMode(CORNER)
+  ellipse (451, 204, 119, 72);
+  fill("#000000") // second color
+  ellipse (474,222, 74, 36);
+  fill("#FF3838") // third color for the eye
+  ellipse (497, 234, 29, 12);
+  
+  //mouth
+  line(382, 483.5, 630, 483.5)  
+}
