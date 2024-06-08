@@ -1,0 +1,27 @@
+let num = 30;
+let mx = [];
+let my = [];
+
+function setup() {
+  createCanvas(500, 500);
+  noStroke();
+  fill(255, 100, 100);
+  for (let i = 0; i < num; i++) {
+    mx.push(i);
+    my.push(i);
+  }
+}
+
+function draw() {
+  background(255, 209, 220);
+
+  let which = frameCount % num;
+  mx[which] = mouseX;
+  my[which] = mouseY;
+
+  for (let i = 0; i < num; i++) {
+
+    let index = (which + 1 + i) % num;
+    rect(mx[index], my[index], i, i);
+  }
+}
