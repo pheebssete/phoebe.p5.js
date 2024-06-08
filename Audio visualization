@@ -1,0 +1,25 @@
+let mic;
+let volHistory = [];
+
+function setup() {
+  createCanvas(400, 400);
+  mic = new p5.AudioIn();
+  mic.start();
+}
+
+function draw() {
+  background(0);
+  volHistory.push(mic.getLevel());
+  strokeWeight(5);
+  let middleY = height / 2;
+  for (let i = 0; i < width; i++) {
+    let mappedAmp = map(volHistory[i], 0, 1, middleY, 0);
+    let colorMap = map(volHistory[i], 0, 1, 130, 0);
+    colorMode(HSL);
+    stroke(colorMap, 100, 10);
+    line(i, middleY, i, mappedAmp);
+  }
+  if (volHistory.length >= width - 1) {
+    volHistory.splice(0, 1);
+  }
+}
