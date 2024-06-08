@@ -1,0 +1,25 @@
+function setup() {
+	createCanvas(500, 500);
+}
+
+function draw() {
+  background (135,206,250);
+  //ground
+  rect(0, 310, 499, 220);
+
+  // head
+  ellipse(176, 211, 166, 117);
+  line(94, 200, 256, 200);
+  ellipse(150, 180, 46, 30)
+  
+  //body
+  rect(45, 210, 235, 89)
+  ellipse(72, 220, 27, 33)
+
+  //wheel
+  ellipse(85, 300, 53, 53);
+  ellipse(235, 290, 76, 76);
+  line(280, 211, 80, 273);
+  line(310, 150, 280, 210);
+  ellipse(310, 150, 10, 10);
+}
