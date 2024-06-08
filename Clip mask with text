@@ -1,0 +1,28 @@
+function setup() {
+  createCanvas(400, 400);
+  background(245,245,220);
+
+  cnv4 = createGraphics(width, height);
+  ctx2 = cnv4.canvas.getContext("2d");
+  cnv4.fill(111,78,55);
+  cnv4.rect(100, 100, 200); // size of the rectangle 
+  ctx2.clip();
+  cnv4.fill(196,164,132); //  color of the circle
+  cnv4.circle(200, 230, 100); // the position and size
+  image(cnv4, 0, 0); 
+  
+
+  
+  //text:
+  cnv3 = createGraphics(width, height);
+  cnv3.fill(131,105,83);  
+  cnv3.rect(190,200,200, 100 );  
+  cnv3.erase();
+  cnv3.textSize(30);
+  cnv3.textFont("Tiny5")
+    cnv3.text('Monkey Amani', 200, 250); 
+  image(cnv3, 0, 0); 
+  
+}
+
+
